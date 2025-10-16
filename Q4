@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+struct SalesRecord{
+    string month;
+    float amount;
+}SalesRecords[12];
+int main() {
+    int i;
+    float min, max;
+    string min_month, max_month;
+    for(i=0;i<12;i++){
+        cout<<"\nEnter the month: ";
+        cin>>SalesRecords[i].month;
+        cout<<"Enter the sales amount of "<<SalesRecords[i].month<<" : ";
+        cin>>SalesRecords[i].amount;
+    }
+    min=SalesRecords[0].amount;
+    max=SalesRecords[0].amount;
+    min_month=SalesRecords[0].month;
+    max_month= SalesRecords[0].month;
+    for(i=1;i<12;i++){
+        if (SalesRecords[i].amount>max){
+        max = SalesRecords[i].amount;
+        max_month = SalesRecords[i].month;
+        }
+        else if (SalesRecords[i].amount<min){
+            min = SalesRecords[i].amount;
+            min_month = SalesRecords[i].month;
+        }
+        else {
+            min = min;
+            max = max;
+            min_month = min_month;
+            max_month = max_month;
+        }
+    }
+    cout<<"Highest sales month is "<<max_month<<" and its sales is "<<max;
+    cout<<"\nLowest sales month is "<<min_month<<" and its sales is "<<min;
+    return 0;
+}
